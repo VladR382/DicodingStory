@@ -2,14 +2,10 @@ const CACHE_NAME = "dicoding-story-v1";
 const CACHE_URLS = [
   "/DicodingStory/",
   "/DicodingStory/index.html",
-  "/DicodingStory/main.js",
-  "/DicodingStory/main.css",
-  "/DicodingStory/style.css",
-  "/DicodingStory/pages.css",
-  "/DicodingStory/manifest.json",
+  "/DicodingStory/manifest.json"
 ];
 
-// Install event
+
 self.addEventListener("install", (event) => {
   console.log("Service Worker: Installing...");
 
@@ -21,7 +17,7 @@ self.addEventListener("install", (event) => {
         return Promise.all(
           CACHE_URLS.map((url) => {
             return cache.add(url).catch((err) => {
-              console.error("❌ Gagal cache:", url, err);
+              console.error("Gagal cache:", url, err);
             });
           })
         );
@@ -36,7 +32,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activate event
+
 self.addEventListener("activate", (event) => {
   console.log("Service Worker: Activating...");
 
@@ -60,7 +56,6 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch event
 self.addEventListener("fetch", (event) => {
   if (
     !event.request.url.startsWith("http") ||
@@ -98,7 +93,6 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-// Push event
 self.addEventListener("push", (event) => {
   console.log("Service Worker: Push received");
 
@@ -106,8 +100,8 @@ self.addEventListener("push", (event) => {
     title: "Story Apps",
     options: {
       body: "Ada pembaruan baru!",
-      icon: "/DicodingStory/logo.png",
-      badge: "/DicodingStory/logo.png",
+      icon: "/DicodingStory/cerita.png",
+      badge: "/DicodingStory/cerita.png",
       vibrate: [100, 50, 100],
       actions: [
         { action: "view", title: "Lihat" },
@@ -135,7 +129,6 @@ self.addEventListener("push", (event) => {
   );
 });
 
-// Notification click event
 self.addEventListener("notificationclick", (event) => {
   console.log("Service Worker: Notification clicked", event.action);
 
