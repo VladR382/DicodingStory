@@ -76,7 +76,7 @@ class SavedStoriesPage extends BasePage {
                 try {
                     await deleteStory(storyId);
                     this.showAlert("Cerita berhasil dihapus.", "success");
-                    await this.render(); // Render ulang halaman setelah menghapus
+                    await this.render(); 
                 } catch (error) {
                     this.showAlert("Gagal menghapus cerita.", "error");
                 }

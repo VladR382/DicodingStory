@@ -10,12 +10,12 @@ export class AuthFormHandler {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       
-      let hideLoading = null; // Inisialisasi variabel di sini
+      let hideLoading = null; 
 
       try {
         if (config.validate && !config.validate()) return;
 
-        hideLoading = UIHelper.showButtonLoading(submitBtn, "Memproses..."); // Tetap ada
+        hideLoading = UIHelper.showButtonLoading(submitBtn, "Memproses..."); 
 
         const result = await config.onSubmit();
 
