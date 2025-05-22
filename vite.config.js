@@ -13,14 +13,13 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        // Jika root adalah 'src', maka resolve dari 'src'
         main: resolve(__dirname, 'src', 'index.html'), 
       },
     },
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'), // Alias ini akan berfungsi dengan root: resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src'), 
     },
   },
   server: {
