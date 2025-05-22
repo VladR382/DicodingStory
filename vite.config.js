@@ -3,20 +3,24 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: '.',
-  publicDir: 'public',
+  root: resolve(__dirname, 'src'), 
+  publicDir: 'public', 
+
+  base: '/DicodingStory/', 
+
   build: {
-    outDir: 'dist',
+    outDir: 'docs', 
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
+        // Jika root adalah 'src', maka resolve dari 'src'
+        main: resolve(__dirname, 'src', 'index.html'), 
       },
     },
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(__dirname, 'src'), // Alias ini akan berfungsi dengan root: resolve(__dirname, 'src')
     },
   },
   server: {
