@@ -1,13 +1,4 @@
-APP_URL=<url_aplikasi>
-MAP_SERVICE_API_KEY=<api_key>
+APP_URL=https://vladr382.github.io/DicodingStory/
 
 # Nama Proyek
 Muhammad Rafli - Submission Awal Belajar Pengembangan Web Intermediate.
-
-## API Keys
-Aplikasi menggunakan Leaflet dengan tile server dari OSM yang tidak memerlukan API key.
-
-## Cara Menjalankan Aplikasi
-1. Buka Terminal Jalankan `npm install` untuk menginstal dependensi
-2. Jalankan `npm run dev` untuk menjalankan aplikasi dalam mode development
-3. Akses aplikasi di `http://localhost:5173/`

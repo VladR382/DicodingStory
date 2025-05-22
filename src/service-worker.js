@@ -3,7 +3,9 @@ const CACHE_URLS = [
     './',
     './index.html',
     './src/scripts/main.js',
-    './src/styles/styles.css',
+    './src/styles/main.css',
+    './src/styles/style.css',
+    './src/styles/pages.css',
     './manifest.json',
 ];
 
@@ -92,8 +94,8 @@ self.addEventListener('push', (event) => {
         title: 'Story Apps',
         options: {
             body: 'Ada pembaruan baru!',
-            icon: './src/public/images/logo.png',
-            badge: './src/public/images/logo.png',
+            icon: './images/logo.png',
+            badge: './images/logo.png',
             vibrate: [100, 50, 100],
             actions: [
                 { action: 'view', title: 'Lihat' },

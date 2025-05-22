@@ -83,7 +83,7 @@ async checkIfStorySaved() {
         const saveStoryButton = document.getElementById('save-story');
         if (saveStoryButton) {
             saveStoryButton.innerHTML = isSaved
-                ? '<i class="fa-solid fa-bookmark"></i> Cerita Tersimpan'
+                ? '<i class="fa-solid fa-bookmark"></i> Hapus Cerita '
                 : '<i class="fa-solid fa-bookmark"></i> Simpan Cerita';
             saveStoryButton.classList.toggle('saved', isSaved);
         }

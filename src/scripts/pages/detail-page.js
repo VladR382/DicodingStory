@@ -90,6 +90,9 @@ class DetailPage extends BasePage {
           <i class="fa-solid fa-arrow-left"></i> Kembali
         </a>
         <h2 class="story-title">Cerita dari ${this.story.name}</h2>
+                <button id="save-story" class="btn-futuristic btn-save-story">
+                    <i class="fa-solid fa-bookmark"></i> Simpan Cerita
+                </button>
       </div>
       
       <div class="story-meta">
@@ -171,9 +174,7 @@ class DetailPage extends BasePage {
                 <button id="share-copy" class="btn-futuristic btn-share">
                     <i class="fa-solid fa-copy"></i> Salin Tautan
                 </button>
-                <button id="save-story" class="btn-futuristic btn-save-story">
-                    <i class="fa-solid fa-bookmark"></i> Simpan Cerita
-                </button>
+
             </div>
         </div>
     `;
@@ -445,8 +446,13 @@ class DetailPage extends BasePage {
             transition: background-color 0.3s;
           }
 
+          .btn-save-story.saved {
+            background-color: #f44336; 
+            color: white;
+          }
+
           .btn-save-story:hover {
-            background-color: #3e8e41;
+            background-color:rgb(69, 21, 227); 
           }
           
           @media (max-width: 768px) {

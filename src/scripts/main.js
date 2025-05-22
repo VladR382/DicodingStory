@@ -2,6 +2,8 @@ import "../styles/main.css";
 import { handleNavigation } from "./routes/routes.js";
 import { updateAuthUI } from "./utils/auth-helper.js";
 import UIHelper from "./utils/ui-helper.js";
+import cameraHelper from "./utils/camera-helper.js";
+
 
 const app = {
   async init() {
@@ -11,6 +13,7 @@ const app = {
 
     window.addEventListener("hashchange", () => {
       this.handleRouteChange();
+      cameraHelper.stopCamera()
     });
   },
 
@@ -68,7 +71,7 @@ const app = {
     if ("serviceWorker" in navigator) {
       try {
         const registration = await navigator.serviceWorker.register(
-          "/service-worker.js"
+          `${import.meta.env.BASE_URL}service-worker.js`
         );
         console.log(
           "Service Worker registered with scope:",
