@@ -24,7 +24,7 @@ class NotFoundPage extends BasePage {
           </a>
         </div>
         <div class="not-found-image">
-          <img src="./public/images/not-found.webp" alt="Ilustrasi Halaman Tidak Ditemukan" class="not-found-illustration">
+          <img src="./src/public/not-found.webp" alt="Ilustrasi Halaman Tidak Ditemukan" class="not-found-illustration">
         </div>
       </div>
     `;

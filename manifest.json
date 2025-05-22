@@ -9,13 +9,13 @@
     "theme_color": "#4e6af0",
     "icons": [
         {
-        "src": "./images/cerita.png",
+        "src": "./src/public/cerita.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
         },
         {
-        "src": "./images/cerita.png",
+        "src": "./src/public/cerita.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
