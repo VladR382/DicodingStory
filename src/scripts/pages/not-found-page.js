@@ -1,4 +1,5 @@
 import BasePage from "./base-page.js";
+import notFound from '@/assets/not-found.webp';
 
 class NotFoundPage extends BasePage {
   constructor(options) {
@@ -24,7 +25,7 @@ class NotFoundPage extends BasePage {
           </a>
         </div>
         <div class="not-found-image">
-          <img src="./public/images/not-found.webp" alt="Ilustrasi Halaman Tidak Ditemukan" class="not-found-illustration">
+          <img src="${notFound}" alt="Ilustrasi Halaman Tidak Ditemukan" class="not-found-illustration">
         </div>
       </div>
     `;

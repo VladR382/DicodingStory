@@ -95,7 +95,7 @@ self.addEventListener('push', (event) => {
         options: {
             body: 'Ada pembaruan baru!',
             icon: './src/public/images/logo.png',
-            badge: './src/public/images/cerita.png',
+            badge: './src/public/images/logo.png',
             vibrate: [100, 50, 100],
             actions: [
                 { action: 'view', title: 'Lihat' },
