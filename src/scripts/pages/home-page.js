@@ -3,6 +3,7 @@ import UIHelper from "../utils/ui-helper.js";
 import { navigateTo } from "../routes/routes.js";
 import HomePresenter from "../presenters/home-presenter.js";
 import { isLoggedIn } from "../utils/auth-helper.js";
+import heroImage from '@/assets/hero-image.png';
 
 class HomeView extends BasePage {
   constructor(options) {
@@ -87,7 +88,7 @@ class HomeView extends BasePage {
         </div>
       </div>
       <div class="hero-image">
-        <img src="./public/images/hero-image.png" alt="Ilustrasi Berbagi Cerita" class="hero-illustration">
+        <img src="${heroImage}" alt="Ilustrasi Berbagi Cerita" class="hero-illustration">
       </div>
     `;
 
