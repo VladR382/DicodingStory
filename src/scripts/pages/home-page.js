@@ -87,7 +87,7 @@ class HomeView extends BasePage {
         </div>
       </div>
       <div class="hero-image">
-        <img src="/public/hero-image.png" alt="Ilustrasi Berbagi Cerita" class="hero-illustration">
+        <img src="./public/hero-image.png" alt="Ilustrasi Berbagi Cerita" class="hero-illustration">
       </div>
     `;
 
