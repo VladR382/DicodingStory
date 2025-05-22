@@ -94,8 +94,8 @@ self.addEventListener('push', (event) => {
         title: 'Story Apps',
         options: {
             body: 'Ada pembaruan baru!',
-            icon: './images/logo.png',
-            badge: './images/logo.png',
+            icon: './src/public/images/logo.png',
+            badge: './src/public/images/cerita.png',
             vibrate: [100, 50, 100],
             actions: [
                 { action: 'view', title: 'Lihat' },
