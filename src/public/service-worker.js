@@ -10,51 +10,62 @@ const CACHE_URLS = [
 ];
 
 // Install event
-self.addEventListener('install', (event) => {
-  console.log('Service Worker: Installing...');
+self.addEventListener("install", (event) => {
+  console.log("Service Worker: Installing...");
 
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches
+      .open(CACHE_NAME)
       .then((cache) => {
-        console.log('Service Worker: Caching app shell');
-        return cache.addAll(CACHE_URLS);
+        console.log("Service Worker: Caching app shell");
+        return Promise.all(
+          CACHE_URLS.map((url) => {
+            return cache.add(url).catch((err) => {
+              console.error("❌ Gagal cache:", url, err);
+            });
+          })
+        );
       })
       .then(() => {
-        console.log('Service Worker: Install completed');
+        console.log("Service Worker: Install completed");
         return self.skipWaiting();
       })
       .catch((error) => {
-        console.error('Service Worker: Failed to cache', error);
+        console.error("Service Worker: Failed to cache", error);
       })
   );
 });
 
 // Activate event
-self.addEventListener('activate', (event) => {
-  console.log('Service Worker: Activating...');
+self.addEventListener("activate", (event) => {
+  console.log("Service Worker: Activating...");
 
   event.waitUntil(
-    caches.keys()
+    caches
+      .keys()
       .then((cacheNames) => {
         return Promise.all(
-          cacheNames.filter((cacheName) => cacheName !== CACHE_NAME)
+          cacheNames
+            .filter((cacheName) => cacheName !== CACHE_NAME)
             .map((cacheName) => {
-              console.log('Service Worker: Clearing old cache:', cacheName);
+              console.log("Service Worker: Clearing old cache:", cacheName);
               return caches.delete(cacheName);
             })
         );
       })
       .then(() => {
-        console.log('Service Worker: Activation completed');
+        console.log("Service Worker: Activation completed");
         return self.clients.claim();
       })
   );
 });
 
 // Fetch event
-self.addEventListener('fetch', (event) => {
-  if (!event.request.url.startsWith('http') || 
-      event.request.url.includes('dicoding.dev')) {
+self.addEventListener("fetch", (event) => {
+  if (
+    !event.request.url.startsWith("http") ||
+    event.request.url.includes("dicoding.dev")
+  ) {
     return;
   }
 
@@ -73,14 +84,14 @@ self.addEventListener('fetch', (event) => {
             return cachedResponse;
           }
 
-          if (event.request.headers.get('accept').includes('text/html')) {
-            return caches.match('/DicodingStory/index.html');
+          if (event.request.headers.get("accept").includes("text/html")) {
+            return caches.match("/DicodingStory/index.html");
           }
 
-          return new Response('Network error', {
+          return new Response("Network error", {
             status: 503,
-            statusText: 'Service Unavailable',
-            headers: new Headers({ 'Content-Type': 'text/plain' })
+            statusText: "Service Unavailable",
+            headers: new Headers({ "Content-Type": "text/plain" }),
           });
         });
       })
@@ -88,24 +99,24 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Push event
-self.addEventListener('push', (event) => {
-  console.log('Service Worker: Push received');
+self.addEventListener("push", (event) => {
+  console.log("Service Worker: Push received");
 
   let notification = {
-    title: 'Story Apps',
+    title: "Story Apps",
     options: {
-      body: 'Ada pembaruan baru!',
-      icon: '/DicodingStory/logo.png',
-      badge: '/DicodingStory/logo.png',
+      body: "Ada pembaruan baru!",
+      icon: "/DicodingStory/logo.png",
+      badge: "/DicodingStory/logo.png",
       vibrate: [100, 50, 100],
       actions: [
-        { action: 'view', title: 'Lihat' },
-        { action: 'open', title: 'Buka Aplikasi' }
+        { action: "view", title: "Lihat" },
+        { action: "open", title: "Buka Aplikasi" },
       ],
       data: {
-        url: '/DicodingStory/'
-      }
-    }
+        url: "/DicodingStory/",
+      },
+    },
   };
 
   if (event.data) {
@@ -114,7 +125,7 @@ self.addEventListener('push', (event) => {
       const dataJson = JSON.parse(text);
       notification = { ...notification, ...dataJson };
     } catch (e) {
-      console.error('Error parsing push data:', e);
+      console.error("Error parsing push data:", e);
       notification.options.body = text;
     }
   }
@@ -125,20 +136,20 @@ self.addEventListener('push', (event) => {
 });
 
 // Notification click event
-self.addEventListener('notificationclick', (event) => {
-  console.log('Service Worker: Notification clicked', event.action);
+self.addEventListener("notificationclick", (event) => {
+  console.log("Service Worker: Notification clicked", event.action);
 
   event.notification.close();
 
-  let url = '/DicodingStory/';
+  let url = "/DicodingStory/";
   if (event.notification.data && event.notification.data.url) {
     url = event.notification.data.url;
   }
 
   event.waitUntil(
-    clients.matchAll({ type: 'window' }).then((clientList) => {
+    clients.matchAll({ type: "window" }).then((clientList) => {
       for (const client of clientList) {
-        if (client.url.includes(url) && 'focus' in client) {
+        if (client.url.includes(url) && "focus" in client) {
           return client.focus();
         }
       }
