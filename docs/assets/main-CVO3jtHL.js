@@ -632,7 +632,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="/images/hero-image.png" alt="Ilustrasi Berbagi Cerita" class="hero-illustration">
+        <img src="./public/images/hero-image.png" alt="Ilustrasi Berbagi Cerita" class="hero-illustration">
       </div>
     `,e}createStoriesSection(){const e=document.createElement("section");e.className="stories-section";const t=document.createElement("div");return t.className="section-header",t.innerHTML=`
       <h2 class="section-title">Cerita Terbaru</h2>
@@ -694,7 +694,7 @@
           </a>
         </div>
         <div class="not-found-image">
-          <img src="/images/not-found.webp" alt="Ilustrasi Halaman Tidak Ditemukan" class="not-found-illustration">
+          <img src="./public/images/not-found.webp" alt="Ilustrasi Halaman Tidak Ditemukan" class="not-found-illustration">
         </div>
       </div>
     `,this.container.appendChild(e)}}function Y(i){const e=i.split("/");return{resource:e[1]||null,id:e[2]||null}}function $e(i){let e="";return i.resource&&(e=e.concat(`/${i.resource}`)),i.id&&(e=e.concat("/:id")),e||"/"}function Q(){return location.hash.replace("#","")||"/"}function He(){const i=Q(),e=Y(i);return $e(e)}function Ne(){const i=Q();return Y(i)}class Ue extends m{constructor(e){super(e),this.setTitle("Cerita Tersimpan")}async render(){this.clearContainer(),this.showLoading();try{const e=await Ce();this.renderStories(e)}catch(e){this.showError(`Gagal memuat cerita tersimpan: ${e.message}`)}this.addEventListeners()}renderStories(e){this.clearContainer();const t=this.createPageContainer("saved-stories-page"),r=document.createElement("div");r.className="saved-stories-container",e.length===0?r.innerHTML="<p class='no-saved-stories'>Belum ada cerita yang disimpan.</p>":e.forEach(a=>{const n=this.createStoryElement(a);r.appendChild(n)}),t.appendChild(r),this.container.appendChild(t),this.addStyles()}createStoryElement(e){const t=document.createElement("article");return t.className="saved-story-item",t.innerHTML=`
