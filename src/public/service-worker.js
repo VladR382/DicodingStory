@@ -57,10 +57,7 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (
-    !event.request.url.startsWith("http") ||
-    event.request.url.includes("dicoding.dev")
-  ) {
+  if (!event.request.url.startsWith("http")) {
     return;
   }
 

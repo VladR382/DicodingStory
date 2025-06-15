@@ -19,8 +19,22 @@ const app = {
 
   initComponents() {
     UIHelper.initMobileMenu();
-
     updateAuthUI();
+    this._initSkipLink();
+  },
+
+  _initSkipLink() {
+    const skipLink = document.querySelector('.skip-link');
+    const mainContent = document.querySelector('#content');
+
+    if (skipLink && mainContent) {
+      skipLink.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        mainContent.setAttribute('tabindex', -1); 
+        mainContent.focus(); 
+        mainContent.removeAttribute('tabindex'); 
+      });
+    }
   },
 
   async handleRouteChange() {

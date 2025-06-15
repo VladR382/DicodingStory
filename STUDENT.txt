@@ -1,4 +1,4 @@
 APP_URL=https://vladr382.github.io/DicodingStory/
 
 # Nama Proyek
-Muhammad Rafli - Submission Awal Belajar Pengembangan Web Intermediate.
+Muhammad Rafli - Submission Akhir Belajar Pengembangan Web Intermediate.
